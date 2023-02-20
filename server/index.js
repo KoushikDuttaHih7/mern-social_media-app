@@ -10,7 +10,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 import { register } from "./controllers/authController.js";
+import { createPost } from "./controllers/postController.js";
+import { verifyToken } from "./middleware/authMiddleware.js";
 
 // npm i gridfs-stream -> for file upload
 // npm i helmet -> for request safety
@@ -43,10 +46,12 @@ const upload = multer({ storage });
 
 // ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 // ROUTES
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 5001;
