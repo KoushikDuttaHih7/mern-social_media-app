@@ -10,7 +10,7 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    lastname: {
+    lastName: {
       type: String,
       required: true,
     },
@@ -31,7 +31,7 @@ const postSchema = mongoose.Schema(
       of: Boolean,
     },
     comments: {
-      types: Array,
+      type: Array,
       default: [],
     },
   },

@@ -14,6 +14,9 @@ import postRoutes from "./routes/postRoutes.js";
 import { register } from "./controllers/authController.js";
 import { createPost } from "./controllers/postController.js";
 import { verifyToken } from "./middleware/authMiddleware.js";
+import User from "./models/userModel.js";
+import Post from "./models/postModel.js";
+import { users, posts } from "./data/index.js";
 
 // npm i gridfs-stream -> for file upload
 // npm i helmet -> for request safety
@@ -65,6 +68,10 @@ mongoose
     app.listen(PORT, () => {
       console.log(`Server Port: ${PORT}`);
     });
+
+    // ADD DATA ONE TIME
+    // User.insertMany(users);
+    // Post.insertMany(posts);
   })
   .catch((err) => {
     console.log(`${err} did not connect`);
