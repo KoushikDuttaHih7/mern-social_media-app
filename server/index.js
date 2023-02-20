@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import { register } from "./controllers/authController.js";
 
 // npm i gridfs-stream -> for file upload
@@ -45,6 +46,7 @@ app.post("/auth/register", upload.single("picture"), register);
 
 // ROUTES
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 5001;
