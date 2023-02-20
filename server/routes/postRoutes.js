@@ -1,10 +1,10 @@
-import { express } from "express";
+import express from "express";
 import {
   getFeedPosts,
   getUserPosts,
   likePost,
-} from "../controllers/postController";
-import { verifyToken } from "../middleware/authMiddleware";
+} from "../controllers/postController.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
